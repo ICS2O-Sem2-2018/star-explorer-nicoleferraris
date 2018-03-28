@@ -1,16 +1,16 @@
------------------------------------------------------------------------------------------
---
--- main.lua
---
------------------------------------------------------------------------------------------
+  -----------------------------------------------------------------------------------------
+  --
+  -- main.lua
+  --
+  -----------------------------------------------------------------------------------------
 
-local composer = require( "composer" )
+  local composer = require( "composer" )
 
--- Hide status bar
-display.setStatusBar( display.HiddenStatusBar )
+  -- Hide status bar
+  display.setStatusBar( display.HiddenStatusBar )
 
--- Seed the random number generator
-math.randomseed( os.time() )
+  -- Seed the random number generator
+  math.randomseed( os.time() )
 
--- Go to menu screen
-composer.gotoScene( "menu" )
+  -- Go to menu screen
+  composer.gotoScene( "menu" )
