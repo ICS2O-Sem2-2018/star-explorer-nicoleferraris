@@ -181,6 +181,13 @@
       end
 
 
+
+local function endGame()
+  composer.setVariable( "finalScore", score )
+  composer.gotoScene( "highscores", { time=800, effect="crossFade" } )
+end
+
+
       local function onCollision( event )
 
         if ( event.phase == "began" ) then
@@ -218,6 +225,7 @@
 
                        if ( lives == 0 ) then
                          display.remove( ship )
+                         timer.performWithDelay( 2000, endGame )
                        else
                          ship.alpha = 0
                          timer.performWithDelay( 1000, restoreShip )
@@ -296,10 +304,13 @@
 
   	if ( phase == "will" ) then
   		-- Code here runs when the scene is on screen (but is about to go off screen)
+      timer.cancel( gameLoopTimer )
 
   	elseif ( phase == "did" ) then
   		-- Code here runs immediately after the scene goes entirely off screen
-
+      Runtime:removeEventListener( "collision", onCollision )
+      physics.pause()
+      composer.removeScene( "game" )
   	end
   end
 
