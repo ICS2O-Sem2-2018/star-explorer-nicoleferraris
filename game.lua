@@ -79,9 +79,9 @@ local musicTrack
 
   local function createAsteroid()
 
-    local newAsteroid = display.newImageRect( mainGroup, objectSheet, 1, 102, 85 )
+    local newAsteroid = display.newImageRect( mainGroup, "ohno.png", 500, 500 )
     table.insert( asteroidsTable, newAsteroid )
-    physics.addBody( newAsteroid, "dynamic", { radius=40, bounce=0.8 } )
+    physics.addBody( newAsteroid, "dynamic", { radius=70, bounce=0.5 } )
     newAsteroid.myName = "asteroid"
 
     local whereFrom = math.random( 3 )
@@ -112,12 +112,12 @@ local musicTrack
      -- Playfire sound
      audio.play( fireSound )
 
-     local newLaser = display.newImageRect( mainGroup, objectSheet, 5, 14, 40 )
+     local newLaser = display.newImageRect( mainGroup, "pewpew.png", 200, 200 )
      physics.addBody( newLaser, "dynamic", { isSensor=true } )
      newLaser.isBullet = true
      newLaser.myName = "laser"
 
-     newLaser.x = ship.x
+     newLaser.x = ship.x +(ship.width/6)
      newLaser.y = ship.y
      newLaser:toBack()
 
@@ -272,11 +272,11 @@ end
     sceneGroup:insert( uiGroup )     -- Insert into th scene's view group
 
     -- Load background
-    local background = display.newImageRect( backGroup, "background.png", 800, 1400 )
+    local background = display.newImageRect( backGroup, "loli.png", 768, 1024 )
     background.x = display.contentCenterX
     background.y = display.contentCenterY
 
-    ship = display.newImageRect( mainGroup, objectSheet, 4, 98, 79 )
+    ship = display.newImageRect( mainGroup, "imastar.png", 300, 300 )
     ship.x = display.contentCenterX
     ship.y = display.contentHeight - 100
     physics.addBody( ship, { radius=30, isSensor=true } )
@@ -290,7 +290,7 @@ end
     ship:addEventListener( "touch", dragShip )
 
     explosionSound = audio.loadSound( "audio/explosion.wav" )
-    fireSound = audio.loadSound( "audio/fire.wav" )
+    fireSound = audio.loadSound( "ahhh.wav" )
     musicTrack = audio.loadStream( "audio/80s-Space-Game_Looping.wav" )
   end
 
