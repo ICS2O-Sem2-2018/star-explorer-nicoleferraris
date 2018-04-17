@@ -9,15 +9,15 @@
 	-- -----------------------------------------------------------------------------------
 
 	local function gotoGame()
-		composer.gotoScene( "game", { time=500, effect="crossFade" } )
+		composer.gotoScene( "game", { time=800, effect="crossFade" } )
 	end
 
-	local function gotoHighScores()
-		composer.gotoScene( "highscores", { time=800, effect="crossFade" } )
+	local function gotoLevel2()
+		composer.gotoScene( "level2", { time=800, effect="crossFade" } )
 	end
 
-	local function gotoLevels()
-		composer.gotoScene( "levels", { time=800, effect="crossFade" } )
+	local function gotoLevel3()
+		composer.gotoScene( "level3", { time=800, effect="crossFade" } )
 	end
 
 	-- -----------------------------------------------------------------------------------
@@ -34,34 +34,32 @@
 		background.x = display.contentCenterX
 		background.y = display.contentCenterY
 
-		local title = display.newImageRect( sceneGroup, "title.png", 500, 80 )
-		title.x = display.contentCenterX
-		title.y = 200
+		local levelsHeader = display.newText( sceneGroup, "Levels", display.contentCenterX, 100, native.systemFont, 44 )
 
-		local playButton = display.newText( sceneGroup, "Play", display.contentCenterX, 600, native.systemFontBold, 40 )
+		local level1Button = display.newText( sceneGroup, "Level 1", display.contentCenterX, 600, native.systemFontBold, 40 )
 		local gradient = {
 			type="gradient",
 			color1={ 1, 0.2, 0.7 }, color2={ 1, 0.9, 0.5 }, direction="up"
 		}
-		playButton:setFillColor( gradient )
+		level1Button:setFillColor( gradient )
 
-		local levelsButton = display.newText( sceneGroup, "Levels", display.contentCenterX, 690, native.systemFontBold, 40 )
+		local level2Button = display.newText( sceneGroup, "Level 2", display.contentCenterX, 690, native.systemFontBold, 40 )
 		local gradient = {
 			type="gradient",
 			color1={ 1, 0.2, 0.7 }, color2={ 1, 0.9, 0.5 }, direction="up"
 		}
-			levelsButton:setFillColor( gradient )
+			level2Button:setFillColor( gradient )
 
-		local highScoresButton = display.newText( sceneGroup, "High Scores", display.contentCenterX, 780, native.systemFontBold, 40 )
+		local level3Button = display.newText( sceneGroup, "Level 3", display.contentCenterX, 780, native.systemFontBold, 40 )
 		local gradient = {
 			type="gradient",
 			color1={ 1, 0.2, 0.7 }, color2={ 1, 0.9, 0.5 }, direction="up"
 		}
-		highScoresButton:setFillColor( gradient )
+		level3Button:setFillColor( gradient )
 
-		playButton:addEventListener( "tap", gotoGame )
-		levelsButton:addEventListener( "tap", gotoLevels )
-		highScoresButton:addEventListener( "tap", gotoHighScores )
+		level1Button:addEventListener( "tap", gotoGame )
+		level2Button:addEventListener( "tap", gotoLevel2 )
+		level3Button:addEventListener( "tap", gotoLevel3 )
 	end
 
 	-- show()
